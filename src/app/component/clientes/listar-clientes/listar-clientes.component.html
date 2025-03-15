@@ -1,0 +1,54 @@
+<section class="crud-container">
+  <h2>Gerenciamento de Clientes</h2>
+
+  <div class="button-container">
+    <button routerLink="/adicionarCliente">Adicionar</button>
+    <button
+      [disabled]="!clienteSelecionado"
+      [routerLink]="['/editarCliente', clienteSelecionado?.codigo]"
+      class="editar-btn"
+    >
+      Editar
+    </button>
+    <button
+      (click)="onDelete(clienteSelecionado?.codigo)"
+      [disabled]="!clienteSelecionado"
+      class="excluir-btn"
+    >
+      Excluir
+    </button>
+  </div>
+
+  <section class="crud-list">
+    <table *ngIf="listarClientes.length > 0; else semClientes">
+      <thead>
+        <tr>
+          <th>Selecionar</th>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Limite Crédito</th>
+          <th>Fechamento Fatura</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of listarClientes">
+          <td>
+            <input
+              type="checkbox"
+              [checked]="clienteSelecionado?.codigo === cliente.codigo"
+              (change)="onSelectCliente(cliente)"
+            />
+          </td>
+          <td>{{ cliente.codigo }}</td>
+          <td>{{ cliente.nome }}</td>
+          <td>{{ cliente.limiteCredito }}</td>
+          <td>{{ cliente.fechamentoFatura }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #semClientes>
+      <p class="mensagem-vazia">Nenhum cliente encontrado.</p>
+    </ng-template>
+  </section>
+</section>

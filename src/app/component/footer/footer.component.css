@@ -1,0 +1,9 @@
+footer {
+  background-color: #007bff; /* Cor sólida de fundo escuro */
+  color: white; /* Cor do texto */
+  padding: 10px 0; /* Padding para espaçamento */
+  text-align: center; /* Alinha o texto ao centro */
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
