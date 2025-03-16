@@ -32,7 +32,7 @@ export class ListarProdutosComponent {
     }
   }
 
-  onSelectCliente(produto: Produto) {
+  onSelectProduto(produto: Produto) {
     if (this.produtoSelecionado?.codigo === produto.codigo) {
       // Se o mesmo cliente for clicado, desmarcar
       this.produtoSelecionado = null;

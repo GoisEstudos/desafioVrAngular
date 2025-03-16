@@ -19,10 +19,15 @@ export class ListarClientesComponent {
   onDelete(codigo?: string) {
     if (codigo) {
       this.service.excluir(codigo).subscribe(() => {
-        // Após excluir, remover o cliente da lista
+        // Remover o produto da lista
         this.listarClientes = this.listarClientes.filter(
           (cliente) => cliente.codigo !== codigo
         );
+
+        // Resetar a seleção após a exclusão
+        if (this.clienteSelecionado?.codigo === codigo) {
+          this.clienteSelecionado = null;
+        }
       });
     }
   }

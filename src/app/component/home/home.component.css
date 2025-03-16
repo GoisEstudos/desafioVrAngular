@@ -17,7 +17,8 @@
 
 /* Estilização dos botões */
 .btn-cliente,
-.btn-produto {
+.btn-produto,
+.btn-venda {
   background-color: #007bff;
   color: white;
   border: none;
@@ -29,7 +30,8 @@
 }
 
 .btn-cliente:hover,
-.btn-produto:hover {
+.btn-produto:hover,
+.btn-venda:hover {
   background-color: #0056b3;
   transform: scale(1.05);
 }

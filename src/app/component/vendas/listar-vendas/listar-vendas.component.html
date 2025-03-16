@@ -1,0 +1,64 @@
+<section class="crud-vendas">
+  <h2>Gerenciamento de Vendas</h2>
+
+  <div class="button-container">
+    <button routerLink="/adicionarVenda" class="btn-adicionar">
+      Adicionar
+    </button>
+    <button
+      [disabled]="!vendaSelecionada"
+      [routerLink]="['/editarVenda', vendaSelecionada?.codigo]"
+      class="editar-btn"
+    >
+      Editar
+    </button>
+    <button
+      (click)="onDelete(vendaSelecionada?.codigo)"
+      [disabled]="!vendaSelecionada"
+      class="excluir-btn"
+    >
+      Excluir
+    </button>
+  </div>
+
+  <section class="crud-list">
+    <table *ngIf="listarVendas.length > 0; else semVendas">
+      <thead>
+        <tr>
+          <th>Selecionar</th>
+          <th>Código</th>
+          <th>Cliente</th>
+          <th>Itens</th>
+          <th>Data da Venda</th>
+          <th>Valor Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let venda of listarVendas">
+          <td>
+            <input
+              type="checkbox"
+              [checked]="vendaSelecionada?.codigo === venda.codigo"
+              (change)="onSelectVenda(venda)"
+            />
+          </td>
+          <td>{{ venda.codigo }}</td>
+          <td>{{ venda.cliente.nome }}</td>
+          <td>
+            <ul class="itens-lista">
+              <li *ngFor="let item of venda.itens">
+                {{ item.produto.descricao }} - Quantidade: {{ item.quantidade }}
+              </li>
+            </ul>
+          </td>
+          <td>{{ venda.dataVenda }}</td>
+          <td>{{ venda.valorTotal }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #semVendas>
+      <p class="mensagem-vazia">Nenhuma venda encontrada.</p>
+    </ng-template>
+  </section>
+</section>

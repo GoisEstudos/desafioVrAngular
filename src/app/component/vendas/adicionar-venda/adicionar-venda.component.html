@@ -1,0 +1,104 @@
+<section class="form-container">
+  <h2>Adicionar Venda</h2>
+
+  <form [formGroup]="vendasForms" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="cliente">Cliente:</label>
+      <select id="cliente" formControlName="cliente">
+        <option value="" disabled selected>Selecione um cliente</option>
+        <option *ngFor="let cliente of clientes" [value]="cliente.codigo">
+          {{ cliente.nome }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          vendasForms.get('cliente')?.invalid &&
+          vendasForms.get('cliente')?.touched
+        "
+        class="error"
+      >
+        Cliente é obrigatório.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="dataVenda">Data da Venda:</label>
+      <input id="dataVenda" type="datetime-local" formControlName="dataVenda" />
+      <div
+        *ngIf="
+          vendasForms.get('dataVenda')?.invalid &&
+          vendasForms.get('dataVenda')?.touched
+        "
+        class="error"
+      >
+        Data da venda é obrigatória.
+      </div>
+    </div>
+
+    <div formArrayName="itens">
+      <div
+        *ngFor="let item of itens.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <div class="form-group">
+          <label for="produto">Produto:</label>
+          <select
+            id="produto"
+            formControlName="produto"
+            (change)="onProdutoSelecionado(i)"
+          >
+            <option value="" disabled selected>Selecione um produto</option>
+            <option *ngFor="let produto of produtos" [value]="produto.codigo">
+              {{ produto.descricao }}
+            </option>
+          </select>
+          <div
+            *ngIf="item.get('produto')?.invalid && item.get('produto')?.touched"
+            class="error"
+          >
+            Produto é obrigatório.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="quantidade">Quantidade:</label>
+          <input
+            id="quantidade"
+            type="number"
+            formControlName="quantidade"
+            min="1"
+          />
+          <div
+            *ngIf="
+              item.get('quantidade')?.invalid && item.get('quantidade')?.touched
+            "
+            class="error"
+          >
+            Quantidade deve ser maior ou igual a 1.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="valorTotal">Valor Total:</label>
+      <input
+        id="valorTotal"
+        type="text"
+        [value]="vendasForms.get('valorTotal')?.value"
+        disabled
+      />
+    </div>
+
+    <div class="form-group">
+      <button type="button" (click)="addItem()">
+        <img src="assets/imagens/add.svg" alt="add-icon" />
+      </button>
+    </div>
+
+    <div class="button-container">
+      <button type="submit" [disabled]="vendasForms.invalid">Salvar</button>
+      <button type="button" (click)="onCancelar()">Cancelar</button>
+    </div>
+  </form>
+</section>

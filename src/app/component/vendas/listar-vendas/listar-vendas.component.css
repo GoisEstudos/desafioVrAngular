@@ -1,0 +1,104 @@
+/* Estilização geral dos botões */
+.button-container button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff; /* Cor padrão para botões */
+  color: white;
+  transition: background-color 0.3s ease, opacity 0.3s ease; /* Transições suaves */
+}
+
+/* Efeito de hover nos botões habilitados */
+.button-container button:hover:enabled {
+  opacity: 0.8; /* Efeito de hover */
+}
+
+/* Estilização do botão desabilitado */
+button:disabled {
+  background-color: #cccccc; /* Cor cinza claro para botões desabilitados */
+  cursor: not-allowed; /* Muda o cursor para indicar que o botão está desabilitado */
+  color: #999999; /* Cor do texto mais suave para indicar desabilitado */
+  border: 1px solid #ddd; /* Cor de borda mais suave */
+}
+
+/* Remover o efeito de hover para o botão desabilitado */
+button:disabled:hover {
+  opacity: 1; /* Remove o efeito de hover para o botão desabilitado */
+}
+
+/* Estilização para o botão de editar desabilitado, caso tenha uma classe específica */
+.button-container .editar-btn:disabled {
+  background-color: #cccccc; /* Cor cinza claro para o botão de editar desabilitado */
+  color: #999999; /* Cor do texto mais suave */
+  border: 1px solid #ddd; /* Cor de borda mais suave */
+}
+.button-container .excluir-btn:disabled {
+  background-color: #cccccc; /* Cor cinza claro para o botão de editar desabilitado */
+  color: #999999; /* Cor do texto mais suave */
+  border: 1px solid #ddd; /* Cor de borda mais suave */
+}
+
+/* Contêiner dos botões */
+.button-container {
+  display: flex; /* Organiza os botões na horizontal */
+  gap: 10px; /* Adiciona um espaço de 10px entre os botões */
+  justify-content: flex-start; /* Alinha os botões à esquerda */
+}
+
+/* Container principal */
+.crud-produtos {
+  padding: 20px;
+}
+
+/* Tabela de listagem de clientes */
+.crud-list table {
+  width: 100%;
+  border-collapse: collapse; /* Para evitar duplicação das bordas */
+  margin-top: 20px;
+}
+
+.crud-list th,
+.crud-list td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.crud-list th {
+  background-color: #007bff;
+  color: white;
+}
+
+.crud-list tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.crud-list tr:hover {
+  background-color: #f1f1f1; /* Mudança de cor ao passar o mouse */
+}
+
+.crud-list td {
+  text-align: center;
+}
+
+/* Títulos */
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+/* Estilo dos botões, se necessário */
+.crud-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.itens-lista {
+  list-style-type: none; /* Remove as bolinhas */
+  padding: 0; /* Remove o padding */
+  margin: 0; /* Remove o margin */
+}
