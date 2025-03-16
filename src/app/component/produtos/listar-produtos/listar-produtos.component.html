@@ -1,0 +1,54 @@
+<section class="crud-produtos">
+  <h2>Gerenciamento de Produtos</h2>
+
+  <div class="button-container">
+    <button routerLink="/adicionarProduto" class="btn-adicionar">
+      Adicionar
+    </button>
+    <button
+      [disabled]="!produtoSelecionado"
+      [routerLink]="['/editarProduto', produtoSelecionado?.codigo]"
+      class="editar-btn"
+    >
+      Editar
+    </button>
+    <button
+      (click)="onDelete(produtoSelecionado?.codigo)"
+      [disabled]="!produtoSelecionado"
+      class="excluir-btn"
+    >
+      Excluir
+    </button>
+  </div>
+
+  <section class="crud-list">
+    <table *ngIf="listarProdutos.length > 0; else semProdutos">
+      <thead>
+        <tr>
+          <th>Selecionar</th>
+          <th>Código</th>
+          <th>Descrição</th>
+          <th>Preço</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of listarProdutos">
+          <td>
+            <input
+              type="checkbox"
+              [checked]="produtoSelecionado?.codigo === produto.codigo"
+              (change)="onSelectCliente(produto)"
+            />
+          </td>
+          <td>{{ produto.codigo }}</td>
+          <td>{{ produto.descricao }}</td>
+          <td>{{ produto.preco }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #semProdutos>
+      <p class="mensagem-vazia">Nenhum produto encontrado.</p>
+    </ng-template>
+  </section>
+</section>

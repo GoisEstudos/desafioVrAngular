@@ -13,7 +13,8 @@ import { Router, RouterLink } from '@angular/router';
 export class ListarClientesComponent {
   listarClientes: Cliente[] = [];
   clienteSelecionado: Cliente | null = null;
-  constructor(private service: ClienteService, private router: Router) {}
+
+  constructor(private service: ClienteService) {}
 
   onDelete(codigo?: string) {
     if (codigo) {

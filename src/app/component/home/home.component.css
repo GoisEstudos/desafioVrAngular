@@ -1,5 +1,4 @@
 /* Estilização do cabeçalho */
-
 .navbar {
   padding: 1rem;
   text-align: center;
@@ -13,10 +12,12 @@
   justify-content: center;
   align-items: center;
   height: 80vh;
+  gap: 20px; /* Espaçamento entre os botões */
 }
 
-/* Estilização do botão */
-.btn-cliente {
+/* Estilização dos botões */
+.btn-cliente,
+.btn-produto {
   background-color: #007bff;
   color: white;
   border: none;
@@ -27,7 +28,8 @@
   transition: 0.3s;
 }
 
-.btn-cliente:hover {
+.btn-cliente:hover,
+.btn-produto:hover {
   background-color: #0056b3;
   transform: scale(1.05);
 }

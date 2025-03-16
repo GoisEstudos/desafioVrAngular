@@ -1,0 +1,39 @@
+<section class="form-container">
+  <h2>Adicionar Cliente</h2>
+
+  <form [formGroup]="produtosForms" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="descricao">Descricao:</label>
+      <input id="descricao" type="text" formControlName="descricao" />
+      <div
+        *ngIf="
+          produtosForms.get('descricao')?.invalid &&
+          produtosForms.get('descricao')?.touched
+        "
+        class="error"
+      >
+        Descricao é obrigatório.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="preco">Preco:</label>
+      <input id="preco" type="number" formControlName="preco" />
+      <div
+        *ngIf="
+          produtosForms.get('preco')?.invalid &&
+          produtosForms.get('preco')?.touched
+        "
+        class="error"
+      >
+        Preco deve ser maior ou igual a 0.
+      </div>
+    </div>
+
+    <!-- Container para os botões -->
+    <div class="button-container">
+      <button type="submit" [disabled]="produtosForms.invalid">Salvar</button>
+      <button type="button" (click)="onCancelar()">Cancelar</button>
+    </div>
+  </form>
+</section>

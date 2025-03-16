@@ -2,5 +2,20 @@ header {
   background-color: #007bff; /* Cor sólida de fundo */
   color: white; /* Cor do texto */
   padding: 20px 0; /* Padding para dar espaçamento */
-  text-align: center; /* Alinha o título ao centro */
+  text-align: center; /* Alinha o conteúdo ao centro */
+  position: relative; /* Garante que elementos filhos respeitem a posição */
+}
+
+.logo-link {
+  position: absolute;
+  left: 20px; /* Ajuste a posição da âncora */
+  top: 50%;
+  transform: translateY(-50%); /* Centraliza verticalmente */
+  display: inline-block;
+}
+
+.home-icon {
+  width: 40px; /* Tamanho do ícone */
+  height: auto;
+  cursor: pointer; /* Indica que é clicável */
 }
